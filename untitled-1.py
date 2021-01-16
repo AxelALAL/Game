@@ -146,7 +146,6 @@ if __name__ == '__main__':
             if tm2 > 2500:
                 speed += 1
                 tm2 = 0
-            print(speed)
             engine_fire = random.choice(fires)
             screen.fill((0, 0, 0))
             screen.blit(space, (0, y_pos1 - 199))
@@ -384,7 +383,6 @@ if __name__ == '__main__':
         if tm2 > 2500:
             speed += 1
             tm2 = 0
-            print(speed)
         engine_fire = random.choice(fires)
         screen.fill((0, 0, 0))
         screen.blit(space, (0, y_pos1 - 199))
