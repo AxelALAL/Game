@@ -18,6 +18,7 @@ if __name__ == '__main__':
     wall = chan(load_image('wall.png'), (20, 20))
     walls = []
     score = 0
+    #загрузка всех картинок
     background1 = chan(load_image('background1.jpg'), (800, 450))
     planet1 = chan(load_image('planet1.png'), (30, 30))
     planet2 = chan(load_image('planet2.png'), (30, 30))
@@ -63,6 +64,7 @@ if __name__ == '__main__':
     bullets = []
     enemies = []
     
+    #функции для перехода между окнами, стрельбой и тд
     def game_over():
         global text 
         text = 0
@@ -279,6 +281,7 @@ if __name__ == '__main__':
             if i[1] < 0:
                 bullets.remove(i)
                 
+    #выход из игры
     def terminate():
         pygame.quit()
         sys.exit()    
