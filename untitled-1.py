@@ -18,6 +18,7 @@ if __name__ == '__main__':
     wall = chan(load_image('wall.png'), (20, 20))
     walls = []
     score = 0
+    speed = 1
     #загрузка всех картинок
     background1 = chan(load_image('background1.jpg'), (800, 450))
     planet1 = chan(load_image('planet1.png'), (30, 30))
@@ -57,6 +58,7 @@ if __name__ == '__main__':
     clock = pygame.time.Clock()
     sec = 0  
     tm = 0
+    tm2 = 0
     gates_x = 0
     gates_y = -600
     gates1 = chan(load_image('gates1.jpg'), (800, 600))    
@@ -66,7 +68,13 @@ if __name__ == '__main__':
     
     #функции для перехода между окнами, стрельбой и тд
     def game_over():
-        global text 
+        global text
+        global tm
+        global tm2
+        global speed
+        speed = 1
+        tm = 0
+        tm2 = 0
         text = 0
         global score
         scores.append(score)
@@ -134,6 +142,11 @@ if __name__ == '__main__':
         running = True
         while running:
             tm += 1
+            tm2 += 1
+            if tm2 > 2500:
+                speed += 1
+                tm2 = 0
+            print(speed)
             engine_fire = random.choice(fires)
             screen.fill((0, 0, 0))
             screen.blit(space, (0, y_pos1 - 199))
@@ -264,12 +277,12 @@ if __name__ == '__main__':
 
     def update_enemies():
         for i in enemies:
-            i[1][1] += 1
+            i[1][1] += speed
             screen.blit(i[0], i[1])
             if i[1][1] > 600:
                 enemies.remove(i)
         for i in walls:
-            i[1][1] += 1
+            i[1][1] += speed
             screen.blit(i[0], i[1])
             if i[1][1] > 1000:
                 walls.remove(i)            
@@ -367,6 +380,11 @@ if __name__ == '__main__':
     running = True
     while running:
         tm += 1
+        tm2 += 1
+        if tm2 > 2500:
+            speed += 1
+            tm2 = 0
+            print(speed)
         engine_fire = random.choice(fires)
         screen.fill((0, 0, 0))
         screen.blit(space, (0, y_pos1 - 199))
